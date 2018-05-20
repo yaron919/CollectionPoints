@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "1071526281658",
+    "firebase_url": "https://miesprotectionafeka.firebaseio.com",
+    "project_id": "miesprotectionafeka",
+    "storage_bucket": "miesprotectionafeka.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1071526281658:android:5785489d65503a17",
+        "android_client_info": {
+          "package_name": "com.afeka.finalproject.collectionpoints"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1071526281658-gtpkdajdj8gnjacb3rltttte1gen2na7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.afeka.finalproject.collectionpoints",
+            "certificate_hash": "c9f44f137fa0531de650b72a70de0265a32fefa5"
+          }
+        },
+        {
+          "client_id": "1071526281658-bgqdibitiicrfnfq8ln4lv62fi0et18t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA2aTXPoFzE_9qxYRWu1QfPUDRve4Da5gU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1071526281658-bgqdibitiicrfnfq8ln4lv62fi0et18t.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
