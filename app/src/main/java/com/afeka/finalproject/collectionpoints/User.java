@@ -5,12 +5,11 @@ package com.afeka.finalproject.collectionpoints;
  */
 
 public class User {
-    public int isAdmin;
-    public int pointsCollected;
-    public String email;
-    public int pointsApproved;
-    public int pointsDeclined;
-
+    private int isAdmin;
+    private int pointsCollected;
+    private String email;
+    private int pointsApproved;
+    private int pointsDeclined;
 
     public User(){
     }
@@ -22,6 +21,48 @@ public class User {
         this.pointsApproved = pointsApproved;
         this.pointsDeclined = pointsDeclined;
     }
+
+    public void setIsAdmin(int isAdmin) {
+        this.isAdmin = isAdmin;
+    }
+
+    public void setPointsCollected(int pointsCollected) {
+        this.pointsCollected = pointsCollected;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setPointsApproved(int pointsApproved) {
+        this.pointsApproved = pointsApproved;
+    }
+
+    public void setPointsDeclined(int pointsDeclined) {
+        this.pointsDeclined = pointsDeclined;
+    }
+
+    public int getIsAdmin() {
+        return isAdmin;
+    }
+
+    public int getPointsCollected() {
+        return pointsCollected;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public int getPointsApproved() {
+        return pointsApproved;
+    }
+
+    public int getPointsDeclined() {
+        return pointsDeclined;
+    }
+
+
 
 
 }
