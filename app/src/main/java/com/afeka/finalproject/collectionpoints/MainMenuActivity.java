@@ -55,16 +55,16 @@ public class MainMenuActivity extends AppCompatActivity {
         for (DataSnapshot ds : dataSnapshot.getChildren())
         {
             User user = new User();
-            user.setEmail(ds.child("users").child(uID).getValue(User.class).getEmail());
-            user.setIsAdmin(ds.child("users").child(uID).getValue(User.class).getIsAdmin());
-            user.setPointsApproved(ds.child("users").child(uID).getValue(User.class).getPointsApproved());
-            user.setPointsCollected(ds.child("users").child(uID).getValue(User.class).getPointsCollected());
-            user.setPointsDeclined(ds.child("users").child(uID).getValue(User.class).getPointsDeclined());
+            user.setEmail(ds.child(uID).getValue(User.class).getEmail());
+            user.setIsAdmin(ds.child(uID).getValue(User.class).getIsAdmin());
+            user.setPointsApproved(ds.child(uID).getValue(User.class).getPointsApproved());
+            user.setPointsCollected(ds.child(uID).getValue(User.class).getPointsCollected());
+            user.setPointsDeclined(ds.child(uID).getValue(User.class).getPointsDeclined());
 
             nameET.setText(user.getEmail());
-            approveEt.setText(user.getPointsApproved());
-            declineEt.setText(user.getPointsDeclined());
-            collectEt.setText(user.getPointsCollected());
+            approveEt.setText(("Points approved "+user.getPointsApproved()));
+            declineEt.setText("Points declined "+user.getPointsDeclined());
+            collectEt.setText("points collected "+user.getPointsCollected());
         }
     }
 
