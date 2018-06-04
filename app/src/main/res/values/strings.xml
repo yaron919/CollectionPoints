@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">CollectionPoints</string>
+    <string name="insert_point">Inset Point</string>
 </resources>
