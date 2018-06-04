@@ -1,8 +1,14 @@
 package com.afeka.finalproject.collectionpoints;
 
+import android.content.Intent;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MenuItem;
+import android.view.View;
 import android.widget.EditText;
+import android.widget.PopupMenu;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -20,6 +26,7 @@ public class MainMenuActivity extends AppCompatActivity {
     private EditText collectEt;
     private EditText approveEt;
     private EditText declineEt;
+    private FloatingActionButton floatMenu;
 
 
 
@@ -32,6 +39,32 @@ public class MainMenuActivity extends AppCompatActivity {
         collectEt = (EditText) findViewById(R.id.collectedMainActivity);
         approveEt = (EditText) findViewById(R.id.approvedMainActivity);
         declineEt = (EditText) findViewById(R.id.declinedPointsActivity);
+        floatMenu = (FloatingActionButton)findViewById(R.id.floatingPopupMenu);
+
+        floatMenu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                PopupMenu popupMenu = new PopupMenu(MainMenuActivity.this,floatMenu);
+                popupMenu.getMenuInflater().inflate(R.menu.popup_menu, popupMenu.getMenu());
+                popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem item) {
+                        switch(item.getOrder()){
+                            case 0:
+                                startActivity(new Intent(MainMenuActivity.this,PointsInsert.class));
+                            case 1:
+                                startActivity(new Intent(MainMenuActivity.this,AdminActions.class));
+
+                        }
+                        return true;
+                    }
+                });
+
+                popupMenu.show();
+
+            }
+        });
         pullUserData();
     }
 
