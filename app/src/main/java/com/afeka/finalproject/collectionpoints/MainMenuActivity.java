@@ -15,10 +15,12 @@ public class MainMenuActivity extends AppCompatActivity {
 
     private User user;
     private FirebaseAuth mAuth;
+    private DatabaseReference mDatabase;
     private EditText nameET;
     private EditText collectEt;
     private EditText approveEt;
     private EditText declineEt;
+
 
 
     @Override
@@ -34,8 +36,8 @@ public class MainMenuActivity extends AppCompatActivity {
     }
 
     void pullUserData(){
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
-        ref.addListenerForSingleValueEvent(new ValueEventListener() {
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+        mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 showData(dataSnapshot);
@@ -51,16 +53,28 @@ public class MainMenuActivity extends AppCompatActivity {
 
     private void showData(DataSnapshot dataSnapshot) {
         String uID = mAuth.getCurrentUser().getUid();
-        System.out.println(uID);
         for (DataSnapshot ds : dataSnapshot.getChildren())
         {
-            User user = new User();
-            user.setEmail(ds.child(uID).getValue(User.class).getEmail());
-            user.setIsAdmin(ds.child(uID).getValue(User.class).getIsAdmin());
-            user.setPointsApproved(ds.child(uID).getValue(User.class).getPointsApproved());
-            user.setPointsCollected(ds.child(uID).getValue(User.class).getPointsCollected());
-            user.setPointsDeclined(ds.child(uID).getValue(User.class).getPointsDeclined());
+            user = new User();
+            if(ds.child(uID).getValue() == null){ // create user if doesn't exist yet
+                mDatabase.child("users").child(uID).child("email").setValue(mAuth.getCurrentUser().getEmail());
+                mDatabase.child("users").child(uID).child("isAdmin").setValue(0);
+                mDatabase.child("users").child(uID).child("pointsApproved").setValue(0);
+                mDatabase.child("users").child(uID).child("pointsCollected").setValue(0);
+                mDatabase.child("users").child(uID).child("pointsDeclined").setValue(0);
+                user.setEmail(mAuth.getCurrentUser().getEmail());
+                user.setIsAdmin(0);
+                user.setPointsApproved(0);
+                user.setPointsCollected(0);
+                user.setPointsDeclined(0);
 
+            }else { // fetch user
+                user.setEmail(ds.child(uID).getValue(User.class).getEmail());
+                user.setIsAdmin(ds.child(uID).getValue(User.class).getIsAdmin());
+                user.setPointsApproved(ds.child(uID).getValue(User.class).getPointsApproved());
+                user.setPointsCollected(ds.child(uID).getValue(User.class).getPointsCollected());
+                user.setPointsDeclined(ds.child(uID).getValue(User.class).getPointsDeclined());
+            }
             nameET.setText(user.getEmail());
             approveEt.setText(("Points approved "+user.getPointsApproved()));
             declineEt.setText("Points declined "+user.getPointsDeclined());
