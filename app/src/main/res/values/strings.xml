@@ -1,7 +1,11 @@
 <resources>
     <string name="app_name">CollectionPoints</string>
+<<<<<<< HEAD
     <string name="insert_points_popup">מסך הזנת נקודות</string>
     <string name="admin_popup"> מסך אישור נקודות אדמין</string>
 
 
+=======
+    <string name="insert_point">Inset Point</string>
+>>>>>>> 1e3cd67c7c9b8830a502a31296263eb946e11083
 </resources>
